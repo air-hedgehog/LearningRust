@@ -8,6 +8,7 @@ fn main() {
     v = vec![1, 2, 3];
 
     //adding elements to vector:
+
     v.push(4);
     v.push(5);
     v.push(6);
@@ -65,4 +66,51 @@ fn main() {
         SpreadsheetCell::Text(String::from("blue")),
         SpreadsheetCell::Float(10.12),
     ];
+
+    //creating String:
+    let mut s = String::new();
+    let data = "initial contents";
+    s = data.to_string();
+    // the method also works on a literal directly:
+    s = "initial contents".to_string();
+    //We can also use the function String::from to create a String from a string literal.
+    s = String::from("initial contents");
+
+    //appending string:
+    let mut s = String::from("foo");
+    s.push_str("bar");
+
+    let mut s1 = String::from("foo");
+    let s2 = "bar";
+    //'push_str' taking slice of s2 and not the actual value,
+    //so s2 is still valid
+    s1.push_str(s2);
+    println!("s2 is {}", s2);
+    //The push method takes a single character as a parameter and adds it to the String.
+    s1.push('l');
+    //concentration with '+':
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // Note s1 has been moved here and can no longer be used
+
+    //formating string:
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+    let s = format!("{}-{}-{}", s1, s2, s3); //format! macro doesn't take ownership
+                                             //of any of it's parameters
+
+    //indexing through the string, to get speciffic char is
+    //not allowed in Rust. we just can iterate through string
+    //using chars() or bytes() metod:
+    for c in "नमस्ते".chars() {
+        println!("{}", c);
+    }
+
+    for b in "नमस्ते".bytes() {
+        println!("{}", b);
+    }
+    // valid Unicode scalar values may be made up of more than 1 byte
+    
 }
