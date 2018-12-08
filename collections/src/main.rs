@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     //vector declarations
 
@@ -112,5 +114,30 @@ fn main() {
         println!("{}", b);
     }
     // valid Unicode scalar values may be made up of more than 1 byte
-    
+
+    //hasMaps
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    //we can collect items from two vectorslet teams  = vec![String::from("Blue"), String::from("Yellow")];
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let initial_scores = vec![10, 50];
+    //it will iterate until the shortest vector length.
+    let mut scores: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
+
+    // to check if hasMap contains the value, associated with speciffic key
+    //we can call 'entry' method:
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.entry(String::from("Yellow")).or_insert(50);
+    scores.entry(String::from("Blue")).or_insert(50);
+
+    //modify value in hashMap if it exists:
+    let text = "hello world wonderful world";
+    let mut map = HashMap::new();
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
 }
